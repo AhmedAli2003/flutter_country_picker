@@ -42,6 +42,15 @@ class CountryListThemeData {
   /// the margin of the bottom sheet
   final EdgeInsets? margin;
 
+  /// the border color of the search text field
+  final Color? borderColor;
+
+  /// the color of the cursor in search text field
+  final Color? cursorColor;
+
+  // the height of the cursor in search text field
+  final double? cursorHeight;
+
   const CountryListThemeData({
     this.backgroundColor,
     this.textStyle,
@@ -52,5 +61,8 @@ class CountryListThemeData {
     this.bottomSheetHeight,
     this.padding,
     this.margin,
+    this.borderColor,
+    this.cursorColor,
+    this.cursorHeight,
   });
 }
