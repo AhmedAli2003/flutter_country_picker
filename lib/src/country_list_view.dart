@@ -43,6 +43,15 @@ class CountryListView extends StatefulWidget {
   /// An optional argument for hiding the search bar
   final bool showSearch;
 
+  /// An optional argument for border color for search input field
+  final Color? borderColor;
+
+  /// An optional argument for cursor color
+  final Color? cursorColor;
+
+  /// An optional argument for cursor height
+  final double? cursorHeight;
+
   const CountryListView({
     Key? key,
     required this.onSelect,
@@ -54,6 +63,9 @@ class CountryListView extends StatefulWidget {
     this.searchAutofocus = false,
     this.showWorldWide = false,
     this.showSearch = true,
+    this.borderColor,
+    this.cursorColor,
+    this.cursorHeight,
   })  : assert(
           exclude == null || countryFilter == null,
           'Cannot provide both exclude and countryFilter',
@@ -129,6 +141,8 @@ class _CountryListViewState extends State<CountryListView> {
             child: TextField(
               autofocus: _searchAutofocus,
               controller: _searchController,
+              cursorColor: widget.cursorColor,
+              cursorHeight: widget.cursorHeight,
               style:
                   widget.countryListTheme?.searchTextStyle ?? _defaultTextStyle,
               decoration: widget.countryListTheme?.inputDecoration ??
@@ -138,7 +152,8 @@ class _CountryListViewState extends State<CountryListView> {
                     prefixIcon: const Icon(Icons.search),
                     border: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: const Color(0xFF8C98A8).withOpacity(0.2),
+                        color: widget.borderColor ??
+                            const Color(0xFF8C98A8).withOpacity(0.2),
                       ),
                     ),
                   ),
