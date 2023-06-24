@@ -116,6 +116,13 @@ class _CountryListViewState extends State<CountryListView> {
 
   @override
   Widget build(BuildContext context) {
+    final OutlineInputBorder searchFieldBorder =  OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: widget.countryListTheme?.borderColor ??
+                            const Color(0xFF8C98A8).withOpacity(0.2),
+                      ),
+                    );
+
     final String searchLabel =
         CountryLocalizations.of(context)?.countryName(countryCode: 'search') ??
             'Search';
@@ -138,12 +145,9 @@ class _CountryListViewState extends State<CountryListView> {
                     labelText: searchLabel,
                     hintText: searchLabel,
                     prefixIcon: const Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: widget.countryListTheme?.borderColor ??
-                            const Color(0xFF8C98A8).withOpacity(0.2),
-                      ),
-                    ),
+                    enabledBorder: searchFieldBorder,
+                    focusedBorder: searchFieldBorder,
+                    border: searchFieldBorder,
                   ),
               onChanged: _filterSearchResults,
             ),
